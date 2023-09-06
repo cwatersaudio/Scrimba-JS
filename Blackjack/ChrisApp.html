@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris's Blackjack Game</title>
+    <link href="assets/css/chrisStyles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="game_background">
+        <h2 id="message">Welcome to Blackjack!</h2>
+        <label for="name">What is your name?</label><input id="name" type="text" placeholder="Bob">
+        <label for="wager">How much would you like to bet? $</label><input id="wager" type="number" placeholder="200">
+        <button id="start-game" onclick="startGame()">Start Game!</button>
+        <div id="game-buttons">
+            <button id="draw" onclick="makeHand()">Draw</button>
+            <button id="hit" onclick="addCard(player.playerHand)">Hit</button>
+            <button id="stay" onclick="stay()">Stay</button>
+        </div>
+        <div id="game-info">
+            <p id="player-cards"></p>
+            <p id="player-total">Card Total: </p>
+            <p id="player-name"></p>
+            <p id="player-wager"></p>
+            <p id="dealer-hand"></p>
+            <p id="dealer-total"></p>
+        </div>
+
+    </div>
+
+<script src="assets/js/ChrisApp.js"></script>
+</body>
+</html>
