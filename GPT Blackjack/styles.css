@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0d5eaf;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    background-color: #000;
+    padding: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.casino-table {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.dealer, .player {
+    width: 45%;
+    padding: 20px;
+    background-color: #0d5eaf;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.dealer h2, .player h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.cards, .total {
+    margin: 10px 0;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.buttons button:hover {
+    background-color: #333;
+}
+
+.message {
+    font-size: 18px;
+    padding: 10px;
+    background-color: #ffd700;
+    color: #333;
+    border-radius: 5px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
