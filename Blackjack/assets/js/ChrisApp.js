@@ -1,6 +1,9 @@
+//initial variables
 let card1, card2, sum;
 let cards = [];
 let message = "";
+
+//players
 let dealer = {
     dealerHand: [],
     dHandSum: 0,
@@ -12,6 +15,8 @@ let player = {
     playerHand: [],
     handSum: 0
 }
+
+//DOM elements
 let cardsEl = document.getElementById("player-cards");
 let wagerEl = document.getElementById("player-wager");
 let nameEl = document.getElementById("player-name");
@@ -21,6 +26,7 @@ let buttonsEl = document.getElementById("game-buttons");
 let dHandEl = document.getElementById("dealer-hand");
 let dTotalEl = document.getElementById("dealer-total");
 
+//gameplay
 function startGame () {
     makePlayer();
     playGame();
@@ -59,6 +65,14 @@ const makeCard = () => {
     return Math.floor(Math.random() * (max - min) + min);
   }
  
+  function makePlayer () {
+    player.name = document.getElementById("name").value;
+    player.wager = document.getElementById("wager").value;
+    player.playerHand = makeHand();
+    player.isAlive = true;
+    player.hasBlackJack = false;
+    player.handSum = totalHand(player.playerHand);
+}
   function restartButton () {
     let restart = document.createElement("button");
     restart.innerHTML = "Play Again";
@@ -67,14 +81,7 @@ const makeCard = () => {
     buttonsEl.appendChild(restart);
  }
 
-function makePlayer () {
-    player.name = document.getElementById("name").value;
-    player.wager = document.getElementById("wager").value;
-    player.playerHand = makeHand();
-    player.isAlive = true;
-    player.hasBlackJack = false;
-    player.handSum = totalHand(player.playerHand);
-}
+
 
 function playAgain () {
     player.playerHand = [];
@@ -97,8 +104,7 @@ function makeHand () {
      card1 = makeCard();
      card2 = makeCard();
      cards = [card1,card2];
-    return cards;
-            
+    return cards;      
 }
 
 function addCard (currentHand) {
@@ -137,7 +143,7 @@ function stay () {
         dealer.dAlive = false;
         message = "It's a push"
     }
-    message += "Play again?";
+    message += " Play again?";
     messageEl.textContent = message;
     restartButton ();
 }
