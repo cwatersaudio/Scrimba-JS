@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/index.css">
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <video id="background-video" autoplay loop muted >
+        <source src="./assets/images/card_peeking (2160p).mp4" type="video/mp4">
+    </video>
+    
+    <div id="main-content">
         <h1>Welcome to Blackjack!</h1>
         <h2>Which game do you want to try?</h2>
-        <a href="./ChrisApp.html">Chris's App</a>
-        <a href="./scrimbaBlackjack.html">Scrimba App</a>
+        <button onclick="location.href='./ChrisApp.html'" type="button">
+            Chris's App</button>
+        <button onclick="location.href='./scrimbaBlackjack.html'" type="button">
+            Scrimba App</button>
     </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
-    background-image: url("/Scrimba\ JS/Blackjack/assets/images/table.png");
+    background-image: url('/Blackjack/assets/images/casino_table.jpeg');
     background-size: cover;
     font-weight: bold;
     color: white;
