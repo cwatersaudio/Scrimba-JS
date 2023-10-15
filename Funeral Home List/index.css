@@ -23,11 +23,12 @@ h1 {
 }
 
 .field {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2) 1fr;
     column-gap: 10px;
 }
 
-input[type="text"] {
+input[type="text, email, url"] {
     background-color: #6C3932;
     font-size: 25px;
     padding: 15px;
@@ -38,6 +39,8 @@ input[type="text"] {
     width: 100%;
     color: #FBFBFB;
 }
+
+
 
 input[type="text"]::placeholder {
     color: #371F1B;
