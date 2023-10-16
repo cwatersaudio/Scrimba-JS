@@ -9,9 +9,13 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const funeralHomes =  ref(database, "homes")
 
-const inputFieldEl = document.getElementById("input-field")
+const nameFieldEl = document.getElementById("name-field")
 const addButtonEl = document.getElementById("add-button")
-const addressEl = document.getElementById("location-field")
+const cityEl = document.getElementById("city-field")
+const addressEl = document.getElementById("address-field")
+const websiteEl = document.getElementById("website-field")
+const phoneEl = document.getElementById("phone-field")
+const emailEl =document.getElementById("email-field")
 
 addButtonEl.addEventListener("click", function() {
     let location = {
@@ -25,12 +29,14 @@ addButtonEl.addEventListener("click", function() {
 
     let {name, city, address, phone, email, website} = location;
     
-    name = inputFieldEl.value;
+    name = nameFieldEl.value;
+    city= cityEl.value;
     address= addressEl.value;
+    phone = phoneEl.value;
+    email = emailEl.value;
+    website = websiteEl.value;
     
     
     push(funeralHomes, location)
     console.log(location)
-    
-    // console.log(`${inputValue} added to database`)
 })
