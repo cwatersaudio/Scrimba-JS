@@ -39,3 +39,30 @@ button {
     text-align: center;
     font-family: 'Rubik', sans-serif;
 }
+
+#shopping-list {
+    display: flex;
+    flex-direction: row; 
+    list-style: none;
+    gap:10px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding:0px;
+    max-width: 320px;
+
+    
+    
+}
+
+#shopping-list li {
+    
+    background-color: #FFFDF8;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    flex-grow: 1;
+    text-align: center;
+
+
+   
+}

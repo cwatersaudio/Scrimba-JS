@@ -1,5 +1,5 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://funeral-home-list-default-rtdb.firebaseio.com/"
@@ -18,6 +18,23 @@ const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
 
 addButtonEl.addEventListener("click", function() {
+       
+    let newHome = newEntry()
+    push(funeralHomes, newHome)
+    console.log(newHome)
+})
+
+onValue(funeralHomes, function(snapshot) {
+    let itemsArray = Object.values(snapshot.val())
+    
+    resetFields();
+    
+    for (let i = 0; i < itemsArray.length; i++) {
+        appendItemToShoppingListEl(itemsArray[i])
+    }
+})
+
+function newEntry () {
     let location = {
         // name: "",
         // city: "",
@@ -35,8 +52,15 @@ addButtonEl.addEventListener("click", function() {
     phone = phoneEl.value;
     email = emailEl.value;
     website = websiteEl.value;
-    
-    
-    push(funeralHomes, location)
-    console.log(location)
-})
+
+    return location;
+}
+
+function resetFields () {
+    nameFieldEl.value= ""
+    cityEl.value= ""
+    addressEl.value= ""
+    phoneEl.value= ""
+    emailEl.value= ""
+    websiteEl.value= ""
+}
