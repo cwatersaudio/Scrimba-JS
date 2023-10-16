@@ -1,0 +1,1 @@
+A scrimba project to create a mobile web app using Frirebase.  I'll be coding along in this local copy while also implementing imporovements to this app in my own Funeral List project.
