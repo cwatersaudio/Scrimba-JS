@@ -28,11 +28,9 @@ onValue(shoppingListInDB, function(snapshot) {
     
     for (let i = 0; i < itemsArray.length; i++) {
         let currentItem = itemsArray[i]
-        let currentID = currentItem[0]
-        let currentValue= currentItem[1]
+      
         
-        console.log (currentID)
-        appendItemToShoppingListEl(currentID, currentValue)
+        appendItemToShoppingListEl(currentItem)
     }
 })
 
@@ -44,7 +42,9 @@ function clearInputFieldEl() {
     inputFieldEl.value = ""
 }
 
-function appendItemToShoppingListEl(itemID, itemValue) {
+function appendItemToShoppingListEl(item) {
+    let itemID = item[0]
+    let itemValue= item[1]
     let newItem = Object.assign(document.createElement('li'), { //creates the li element and assigns it a class and id
         id: itemID,
         // class:"list-item"
