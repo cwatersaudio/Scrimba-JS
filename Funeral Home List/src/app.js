@@ -11,7 +11,7 @@ const funeralHomes =  ref(database, "homes")
 
 const nameFieldEl = document.getElementById("name-field")
 const addButtonEl = document.getElementById("add-button")
-const cityEl = document.getElementById("city-field")
+const cityStateEl = document.getElementById("city-state-field")
 const addressEl = document.getElementById("address-field")
 const zipEl = document.getElementById("zip-field")
 const websiteEl = document.getElementById("website-field")
@@ -38,13 +38,13 @@ addButtonEl.addEventListener("click", function() {
 
 function newEntry () {
     let location = { //this works --but can I use destructuring to make the variables nicer?
-        name: "",
-        city: "",
-        address: "",
-        phone: "",
-        email: "",
-        website: "",
-        zip: ""
+        // name: "",
+        // cityState: "",
+        // address: "",
+        // phone: "",
+        // email: "",
+        // website: "",
+        // zip: ""
     }
 
     // let {name, city, address, phone, email, website} = location;
@@ -57,19 +57,20 @@ function newEntry () {
     // website = websiteEl.value;
 
     location.name = nameFieldEl.value;
-    location.city= cityEl.value;
-    location.address= addressEl.value;
+    location.cityState= cityStateEl.value;
+    location.address= addressEl.value
     location.phone = phoneEl.value;
     location.email = emailEl.value;
     location.website = websiteEl.value;
     location.zip = zipEl.value;
-
+    location.fullAddress = `${addressEl.value}, ${cityStateEl.value} ${zipEl.value }`
+    console.log(location.address)
     return location;
 }
 
 function resetFields () {
     nameFieldEl.value= ""
-    cityEl.value= ""
+    cityStateEl.value= ""
     addressEl.value= ""
     phoneEl.value= ""
     emailEl.value= ""
