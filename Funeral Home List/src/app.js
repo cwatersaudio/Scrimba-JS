@@ -1,13 +1,13 @@
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+// import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
+// import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
-const appSettings = {
-    databaseURL: "https://funeral-home-list-default-rtdb.firebaseio.com/"
-}
+// const appSettings = {
+//     databaseURL: "https://funeral-home-list-default-rtdb.firebaseio.com/"
+// }
 
-const app = initializeApp(appSettings);
-const database = getDatabase(app);
-const funeralHomes =  ref(database, "homes")
+// const app = initializeApp(appSettings);
+// const database = getDatabase(app);
+// const funeralHomes =  ref(database, "homes")
 
 const nameFieldEl = document.getElementById("name-field")
 const addButtonEl = document.getElementById("add-button")
@@ -20,38 +20,45 @@ const emailEl =document.getElementById("email-field")
 addButtonEl.addEventListener("click", function() {
        
     let newHome = newEntry()
-    push(funeralHomes, newHome)
+    // push(funeralHomes, newHome)
     console.log(newHome)
 })
 
-onValue(funeralHomes, function(snapshot) {
-    let itemsArray = Object.values(snapshot.val())
+// onValue(funeralHomes, function(snapshot) {
+//     let itemsArray = Object.values(snapshot.val())
     
-    resetFields();
+//     resetFields();
     
-    for (let i = 0; i < itemsArray.length; i++) {
-        appendItemToShoppingListEl(itemsArray[i])
-    }
-})
+//     for (let i = 0; i < itemsArray.length; i++) {
+//         appendItemToShoppingListEl(itemsArray[i])
+//     }
+// })
 
 function newEntry () {
-    let location = {
-        // name: "",
-        // city: "",
-        // address: "",
-        // phone: "",
-        // email: "",
-        // website: ""
+    let location = { //this works --but can I use destructuring to make the variables nicer?
+        name: "",
+        city: "",
+        address: "",
+        phone: "",
+        email: "",
+        website: ""
     }
 
-    let {name, city, address, phone, email, website} = location;
+    // let {name, city, address, phone, email, website} = location;
     
-    name = nameFieldEl.value;
-    city= cityEl.value;
-    address= addressEl.value;
-    phone = phoneEl.value;
-    email = emailEl.value;
-    website = websiteEl.value;
+    // name = nameFieldEl.value;
+    // city= cityEl.value;
+    // address= addressEl.value;
+    // phone = phoneEl.value;
+    // email = emailEl.value;
+    // website = websiteEl.value;
+
+    location.name = nameFieldEl.value;
+    location.city= cityEl.value;
+    location.address= addressEl.value;
+    location.phone = phoneEl.value;
+    location.email = emailEl.value;
+    location.website = websiteEl.value;
 
     return location;
 }
