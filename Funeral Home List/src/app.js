@@ -13,6 +13,7 @@ const nameFieldEl = document.getElementById("name-field")
 const addButtonEl = document.getElementById("add-button")
 const cityEl = document.getElementById("city-field")
 const addressEl = document.getElementById("address-field")
+const zipEl = document.getElementById("zip-field")
 const websiteEl = document.getElementById("website-field")
 const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
@@ -42,7 +43,8 @@ function newEntry () {
         address: "",
         phone: "",
         email: "",
-        website: ""
+        website: "",
+        zip: ""
     }
 
     // let {name, city, address, phone, email, website} = location;
@@ -60,6 +62,7 @@ function newEntry () {
     location.phone = phoneEl.value;
     location.email = emailEl.value;
     location.website = websiteEl.value;
+    location.zip = zipEl.value;
 
     return location;
 }
@@ -71,5 +74,5 @@ function resetFields () {
     phoneEl.value= ""
     emailEl.value= ""
     websiteEl.value= ""
-    console.log("the fields have been reset")
+    zipEl.value = ""
 }
