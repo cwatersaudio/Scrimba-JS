@@ -22,12 +22,12 @@ addButtonEl.addEventListener("click", function() {
     let newHome = newEntry()
     // push(funeralHomes, newHome)
     console.log(newHome)
+    resetFields ();
 })
 
 // onValue(funeralHomes, function(snapshot) {
 //     let itemsArray = Object.values(snapshot.val())
     
-//     resetFields();
     
 //     for (let i = 0; i < itemsArray.length; i++) {
 //         appendItemToShoppingListEl(itemsArray[i])
@@ -70,4 +70,5 @@ function resetFields () {
     phoneEl.value= ""
     emailEl.value= ""
     websiteEl.value= ""
+    console.log("the fields have been reset")
 }
