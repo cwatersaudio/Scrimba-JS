@@ -22,12 +22,15 @@ addButtonEl.addEventListener("click", function() {
 })
 
 onValue(shoppingListInDB, function(snapshot) {
-    let itemsArray = Object.values(snapshot.val())
+    let itemsArray = Object.entries(snapshot.val())
     
     clearShoppingListEl()
     
     for (let i = 0; i < itemsArray.length; i++) {
-        appendItemToShoppingListEl(itemsArray[i])
+        let currentItem = itemsArray[i]
+      
+        
+        appendItemToShoppingListEl(currentItem)
     }
 })
 
@@ -39,6 +42,16 @@ function clearInputFieldEl() {
     inputFieldEl.value = ""
 }
 
-function appendItemToShoppingListEl(itemValue) {
-    shoppingListEl.innerHTML += `<li>${itemValue}</li>`
+function appendItemToShoppingListEl(item) {
+    let itemID = item[0]
+    let itemValue= item[1]
+    let newItem = Object.assign(document.createElement('li'), { //creates the li element and assigns it a class and id
+        id: itemID,
+        // class:"list-item"
+      });
+    newItem.setAttribute("class", "list-item")  
+    shoppingListEl.appendChild(newItem)  //places the li item on the page
+    newItem.innerHTML = itemValue;   //gives the li item text
+    
+    // shoppingListEl.innerHTML += `<li>${itemValue}</li>`
 }
