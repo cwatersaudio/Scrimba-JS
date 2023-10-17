@@ -1,13 +1,13 @@
-// import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
-// import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
-// const appSettings = {
-//     databaseURL: "https://funeral-home-list-default-rtdb.firebaseio.com/"
-// }
+const appSettings = {
+    databaseURL: "https://funeral-home-list-default-rtdb.firebaseio.com/"
+}
 
-// const app = initializeApp(appSettings);
-// const database = getDatabase(app);
-// const funeralHomes =  ref(database, "homes")
+const app = initializeApp(appSettings);
+const database = getDatabase(app);
+const funeralHomes =  ref(database, "homes")
 
 const nameFieldEl = document.getElementById("name-field")
 const addButtonEl = document.getElementById("add-button")
@@ -20,7 +20,7 @@ const emailEl =document.getElementById("email-field")
 addButtonEl.addEventListener("click", function() {
        
     let newHome = newEntry()
-    // push(funeralHomes, newHome)
+    push(funeralHomes, newHome)
     console.log(newHome)
     resetFields ();
 })
@@ -28,6 +28,7 @@ addButtonEl.addEventListener("click", function() {
 // onValue(funeralHomes, function(snapshot) {
 //     let itemsArray = Object.values(snapshot.val())
     
+//     //maybe add future function to clear list on screen if I want that
     
 //     for (let i = 0; i < itemsArray.length; i++) {
 //         appendItemToShoppingListEl(itemsArray[i])
