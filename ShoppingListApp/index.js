@@ -22,12 +22,20 @@ addButtonEl.addEventListener("click", function() {
 })
 
 onValue(shoppingListInDB, function(snapshot) {
-    let itemsArray = Object.values(snapshot.val())
+    let itemsArray = Object.entries(snapshot.val())
     
     clearShoppingListEl()
     
     for (let i = 0; i < itemsArray.length; i++) {
-        appendItemToShoppingListEl(itemsArray[i])
+        let currentItem = itemsArray[i]
+        // Challenge: Make two let variables:
+        // currentItemID and currentItemValue and use currentItem to set both of
+        // them equal to the correct values.
+        let currentID = currentItem[0]
+        let currentValue= currentItem[1]
+        
+        console.log (currentID)
+        appendItemToShoppingListEl(currentValue)
     }
 })
 
