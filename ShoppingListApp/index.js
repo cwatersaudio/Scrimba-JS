@@ -12,6 +12,7 @@ const shoppingListInDB = ref(database, "shoppingList")
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
+const voidEl = document.getElementById("void-message")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
@@ -22,7 +23,7 @@ addButtonEl.addEventListener("click", function() {
 })
 
 onValue(shoppingListInDB, function(snapshot) {
-         
+    voidEl.textContent = ""     
     if (snapshot.exists()) {
     let itemsArray = Object.entries(snapshot.val())
 
@@ -35,7 +36,8 @@ onValue(shoppingListInDB, function(snapshot) {
             appendItemToShoppingListEl(currentItem)
         }
     } else {
-       shoppingListEl.innerHTML = "There's nothing here" 
+       shoppingListEl.innerHTML= ""
+        voidEl.textContent = "There's nothing on the list yet!" //I like this solution better than the scrimba one because it lets me style the message separately
 
     }
 })
