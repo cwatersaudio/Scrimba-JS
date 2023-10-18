@@ -9,7 +9,7 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const funeralHomes =  ref(database, "homes")
 let latestItem = {}
-let updateButton = ''
+let updateButton = false;
 let updateButtonEl;
 let newButtonEl;
 
@@ -27,7 +27,8 @@ addButtonEl.addEventListener("click", function() {
        
     let newHome = addEntry()
     push(funeralHomes, newHome)
-
+    // let latestID = Object.(latestItem)
+    // console.log(latestID)
 
     if (!updateButton) { //is this an insane way to keep the add button to keep adding update buttons?
     addUpdateButton()
@@ -35,16 +36,19 @@ addButtonEl.addEventListener("click", function() {
     }
 })
 
-updateButtonEl.addEventListener("click", function () { //is this how to grab an entry from the firebase database?
-    let updatedEntry = addEntry()
-    funeralHomes[latestItem] = updatedEntry;
-})
+
 
 
 onValue(funeralHomes, function(snapshot) {  //keeps track of the most recent item added to the database for the purspose of updating
     let homesArray = Object.entries(snapshot.val())
-    latestItem = homesArray[homesArray.length-1]
-    console.log(`latest item is ${latestItem}`)
+    
+    for (let i = 0; i < homesArray.length; i++) {
+        latestItem =homesArray[i]
+        console.log(`latest item is ${latestItem}`)
+    }
+    
+    latestItem = homesArray[1]
+    
     
     
    
@@ -99,8 +103,13 @@ const addUpdateButton = () => {
     updateButton = document.createElement("button");
     updateButton.setAttribute("id", "update-button")
     updateButton.textContent = "Update";
-    updateButtonEl =document.getElementById("update-button")
+    // updateButtonEl =document.getElementById("update-button")
     buttonContainer.appendChild(updateButton)
+    updateButton.addEventListener("click", function () { //is this how to grab an entry from the firebase database?
+        let updatedEntry = addEntry()
+        funeralHomes[latestItem] = updatedEntry;
+    })
+
 }
 
 const addNewButton = () => {
