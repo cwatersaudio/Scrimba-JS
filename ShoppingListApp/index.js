@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://shopping-list-2524d-default-rtdb.firebaseio.com/"
@@ -52,6 +52,10 @@ function appendItemToShoppingListEl(item) {
     newItem.setAttribute("class", "list-item")  
     shoppingListEl.appendChild(newItem)  //places the li item on the page
     newItem.innerHTML = itemValue;   //gives the li item text
+
+    newItem.addEventListener("dblclick", function() {
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+        remove(exactLocationOfItemInDB) //
+    })
     
-    // shoppingListEl.innerHTML += `<li>${itemValue}</li>`
 }
