@@ -10,6 +10,8 @@ const database = getDatabase(app);
 const funeralHomes =  ref(database, "homes")
 let latestItem = {}
 let updateButton = ''
+let updateButtonEl;
+let newButtonEl;
 
 const nameFieldEl = document.getElementById("name-field")
 const addButtonEl = document.getElementById("add-button")
@@ -20,8 +22,6 @@ const websiteEl = document.getElementById("website-field")
 const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
 const buttonContainer = document.getElementById("button-container")
-const updateButtonEl =document.getElementById("update-button")
-const newButtonEl = document.getElementById("new-button")
 
 addButtonEl.addEventListener("click", function() {
        
@@ -99,14 +99,14 @@ const addUpdateButton = () => {
     updateButton = document.createElement("button");
     updateButton.setAttribute("id", "update-button")
     updateButton.textContent = "Update";
-    
+    updateButtonEl =document.getElementById("update-button")
     buttonContainer.appendChild(updateButton)
 }
 
 const addNewButton = () => {
     const newButton = document.createElement("button");
     newButton.setAttribute("id", "new-button")
-
+    newButtonEl = document.getElementById("new-button")
     newButton.textContent = "New Entry"
     buttonContainer.appendChild(newButton)
 }
