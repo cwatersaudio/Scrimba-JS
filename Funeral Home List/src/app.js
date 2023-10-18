@@ -8,6 +8,8 @@ const appSettings = {
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const funeralHomes =  ref(database, "homes")
+let latestItem = {}
+let updateButton = ''
 
 const nameFieldEl = document.getElementById("name-field")
 const addButtonEl = document.getElementById("add-button")
@@ -17,26 +19,38 @@ const zipEl = document.getElementById("zip-field")
 const websiteEl = document.getElementById("website-field")
 const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
+const buttonContainer = document.getElementById("button-container")
+const updateButtonEl =document.getElementById("update-button")
+const newButtonEl = document.getElementById("new-button")
 
 addButtonEl.addEventListener("click", function() {
        
-    let newHome = newEntry()
+    let newHome = addEntry()
     push(funeralHomes, newHome)
-    console.log(newHome)
-    resetFields ();
+
+
+    if (!updateButton) { //is this an insane way to keep the add button to keep adding update buttons?
+    addUpdateButton()
+    addNewButton()
+    }
 })
 
-// onValue(funeralHomes, function(snapshot) {
-//     let itemsArray = Object.values(snapshot.val())
-    
-//     //maybe add future function to clear list on screen if I want that
-    
-//     for (let i = 0; i < itemsArray.length; i++) {
-//         appendItemToShoppingListEl(itemsArray[i])
-//     }
-// })
+updateButtonEl.addEventListener("click", function () { //is this how to grab an entry from the firebase database?
+    let updatedEntry = addEntry()
+    funeralHomes[latestItem] = updatedEntry;
+})
 
-function newEntry () {
+
+onValue(funeralHomes, function(snapshot) {  //keeps track of the most recent item added to the database for the purspose of updating
+    let homesArray = Object.entries(snapshot.val())
+    latestItem = homesArray[homesArray.length-1]
+    console.log(`latest item is ${latestItem}`)
+    
+    
+   
+})
+
+function addEntry () {
     let location = { //this works --but can I use destructuring to make the variables nicer?
         // name: "",
         // cityState: "",
@@ -64,8 +78,11 @@ function newEntry () {
     location.website = websiteEl.value;
     location.zip = zipEl.value;
     location.fullAddress = `${addressEl.value}, ${cityStateEl.value} ${zipEl.value }`
-    console.log(location.address)
     return location;
+}
+
+function newEntry() {
+    resetFields()
 }
 
 function resetFields () {
@@ -76,4 +93,20 @@ function resetFields () {
     emailEl.value= ""
     websiteEl.value= ""
     zipEl.value = ""
+}
+
+const addUpdateButton = () => {
+    updateButton = document.createElement("button");
+    updateButton.setAttribute("id", "update-button")
+    updateButton.textContent = "Update";
+    
+    buttonContainer.appendChild(updateButton)
+}
+
+const addNewButton = () => {
+    const newButton = document.createElement("button");
+    newButton.setAttribute("id", "new-button")
+
+    newButton.textContent = "New Entry"
+    buttonContainer.appendChild(newButton)
 }
