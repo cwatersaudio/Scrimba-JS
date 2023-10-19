@@ -12,6 +12,9 @@ html, body {
     flex-direction: column;
     max-width: 320px;
     margin: 30px auto;
+    border: 5px #7e313f solid;
+    border-radius: 8px;
+    padding: 20px;
 }
 
 img {
