@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background-color: #EEF0F4;
+    color: #432000;
 }
 
 .container {
@@ -38,7 +39,14 @@ button {
     font-size: 20px;
     text-align: center;
     font-family: 'Rubik', sans-serif;
+    cursor: pointer;
 }
+
+button:hover {
+    background-color: #432000;
+}
+
+
 
 #shopping-list {
     display: flex;
@@ -62,7 +70,11 @@ button {
     padding: 10px;
     flex-grow: 1;
     text-align: center;
+}
 
+.list-item:hover {
+    background-color: #FFECC7;
+    cursor:pointer;
 }
 
 #void-message {
