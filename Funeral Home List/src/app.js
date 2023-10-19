@@ -1,5 +1,6 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import FuneralHome from './FuneralHomeClass'
 
 const appSettings = {
     databaseURL: "https://funeral-home-list-default-rtdb.firebaseio.com/"
@@ -23,10 +24,36 @@ const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
 const buttonContainer = document.getElementById("button-container")
 
+// class FuneralHome {
+//     constructor(name, cityState, streetAddress, phone, email, website, zip) {
+//         this.name = name;
+//         this.cityState = cityState;
+//         this.streetAddress = streetAddress;
+//         this.phone = phone;
+//         this.email = email;
+//         this.website = website;
+//         this.zip = zip;
+//         this.fullAddress = `${this.streetAddress}, ${this.cityState} ${this.zip}`;
+//     }
+
+// }
+
 addButtonEl.addEventListener("click", function() {
        
-    let newHome = addEntry()
-    push(funeralHomes, newHome)
+    let nextHome = new FuneralHome (
+        nameFieldEl.value, 
+        cityStateEl.value, 
+        addressEl.value,
+        phoneEl.value,
+        emailEl.value,
+        websiteEl.value,
+        zipEl.value
+        )
+
+        console.log(nextHome)
+    // push(funeralHomes, nextHome)
+    // let newHome = addEntry()
+    // push(funeralHomes, newHome)
     // let latestID = Object.(latestItem)
     // console.log(latestID)
 
@@ -65,15 +92,7 @@ function addEntry () {
         // zip: ""
     }
 
-    // let {name, city, address, phone, email, website} = location;
     
-    // name = nameFieldEl.value;
-    // city= cityEl.value;
-    // address= addressEl.value;
-    // phone = phoneEl.value;
-    // email = emailEl.value;
-    // website = websiteEl.value;
-
     location.name = nameFieldEl.value;
     location.cityState= cityStateEl.value;
     location.address= addressEl.value
@@ -84,6 +103,8 @@ function addEntry () {
     location.fullAddress = `${addressEl.value}, ${cityStateEl.value} ${zipEl.value }`
     return location;
 }
+
+
 
 function newEntry() {
     resetFields()

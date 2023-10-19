@@ -1,4 +1,4 @@
-class FuneralHome {
+export class FuneralHome {
     constructor(name, cityState, streetAddress, phone, email, website, zip) {
         this.name = name;
         this.cityState = cityState;
@@ -7,14 +7,8 @@ class FuneralHome {
         this.email = email;
         this.website = website;
         this.zip = zip;
+        this.fullAddress = `${this.streetAddress}, ${this.cityState} ${this.zip}`;
     }
 
 }
 
-// name: "",
-        // cityState: "",
-        // address: "",
-        // phone: "",
-        // email: "",
-        // website: "",
-        // zip: ""
