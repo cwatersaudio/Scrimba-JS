@@ -24,20 +24,6 @@ const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
 const buttonContainer = document.getElementById("button-container")
 
-// class FuneralHome {
-//     constructor(name, cityState, streetAddress, phone, email, website, zip) {
-//         this.name = name;
-//         this.cityState = cityState;
-//         this.streetAddress = streetAddress;
-//         this.phone = phone;
-//         this.email = email;
-//         this.website = website;
-//         this.zip = zip;
-//         this.fullAddress = `${this.streetAddress}, ${this.cityState} ${this.zip}`;
-//     }
-
-// }
-
 addButtonEl.addEventListener("click", function() {
        
     let nextHome = new FuneralHome (
