@@ -81,3 +81,7 @@ li {
     gap:15px;
     flex-grow: 1;
 }
+
+.invisible {
+    display:none;
+}

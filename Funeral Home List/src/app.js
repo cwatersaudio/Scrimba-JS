@@ -1,6 +1,6 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
-import FuneralHome from './FuneralHomeClass'
+import { FuneralHome } from './FHClass.js';
 
 const appSettings = {
     databaseURL: "https://funeral-home-list-default-rtdb.firebaseio.com/"
@@ -10,8 +10,8 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const funeralHomes =  ref(database, "homes")
 let latestItem = {}
-let updateButton = false;
-let updateButtonEl;
+let updateButton;
+let updateButtonEl = false;
 let newButtonEl;
 
 const nameFieldEl = document.getElementById("name-field")
@@ -22,21 +22,9 @@ const zipEl = document.getElementById("zip-field")
 const websiteEl = document.getElementById("website-field")
 const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
+
 const buttonContainer = document.getElementById("button-container")
 
-// class FuneralHome {
-//     constructor(name, cityState, streetAddress, phone, email, website, zip) {
-//         this.name = name;
-//         this.cityState = cityState;
-//         this.streetAddress = streetAddress;
-//         this.phone = phone;
-//         this.email = email;
-//         this.website = website;
-//         this.zip = zip;
-//         this.fullAddress = `${this.streetAddress}, ${this.cityState} ${this.zip}`;
-//     }
-
-// }
 
 addButtonEl.addEventListener("click", function() {
        
@@ -121,22 +109,28 @@ function resetFields () {
 }
 
 const addUpdateButton = () => {
-    updateButton = document.createElement("button");
-    updateButton.setAttribute("id", "update-button")
-    updateButton.textContent = "Update";
+    updateButtonEl = document.createElement("button");
+    updateButtonEl.setAttribute("id", "update-button")
+    updateButtonEl.setAttribute("class" , "")
+    updateButtonEl.textContent = "Update";
     // updateButtonEl =document.getElementById("update-button")
-    buttonContainer.appendChild(updateButton)
-    updateButton.addEventListener("click", function () { //is this how to grab an entry from the firebase database?
-        let updatedEntry = addEntry()
-        funeralHomes[latestItem] = updatedEntry;
-    })
+    buttonContainer.appendChild(updateButtonEl)
+    // updateButtonEl.addEventListener("click", function () { //is this how to grab an entry from the firebase database?
+    //     let updatedEntry = addEntry()
+    //     funeralHomes[latestItem] = updatedEntry;
+    // })
 
 }
 
 const addNewButton = () => {
-    const newButton = document.createElement("button");
-    newButton.setAttribute("id", "new-button")
-    newButtonEl = document.getElementById("new-button")
-    newButton.textContent = "New Entry"
-    buttonContainer.appendChild(newButton)
+    const newButtonEl = document.createElement("button");
+    newButtonEl.setAttribute("id", "new-button")
+    newButtonEl.setAttribute("class" , "")
+    newButtonEl.textContent = "New Entry"
+    buttonContainer.appendChild(newButtonEl)
+    newButtonEl.addEventListener("click", function () {
+        resetFields()
+        newButtonEl.classList.add("invisible")
+        updateButtonEl.classList.add("invisible")
+    })
 }
