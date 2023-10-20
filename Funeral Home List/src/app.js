@@ -10,7 +10,6 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const funeralHomes =  ref(database, "homes")
 let latestItem = {}
-let updateButton;
 let updateButtonEl = false;
 let newButtonEl;
 
@@ -22,7 +21,6 @@ const zipEl = document.getElementById("zip-field")
 const websiteEl = document.getElementById("website-field")
 const phoneEl = document.getElementById("phone-field")
 const emailEl =document.getElementById("email-field")
-
 const buttonContainer = document.getElementById("button-container")
 
 
@@ -39,13 +37,13 @@ addButtonEl.addEventListener("click", function() {
         )
 
         console.log(nextHome)
-    // push(funeralHomes, nextHome)
+    push(funeralHomes, nextHome)
     // let newHome = addEntry()
     // push(funeralHomes, newHome)
     // let latestID = Object.(latestItem)
     // console.log(latestID)
 
-    if (!updateButton) { //is this an insane way to keep the add button to keep adding update buttons?
+    if (!updateButtonEl) { //is this an insane way to keep the add button to keep adding update buttons?
     addUpdateButton()
     addNewButton()
     }
@@ -92,11 +90,6 @@ function addEntry () {
     return location;
 }
 
-
-
-function newEntry() {
-    resetFields()
-}
 
 function resetFields () {
     nameFieldEl.value= ""
