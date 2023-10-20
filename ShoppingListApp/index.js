@@ -61,9 +61,18 @@ function appendItemToShoppingListEl(item) {
     shoppingListEl.appendChild(newItem)  //places the li item on the page
     newItem.innerHTML = itemValue;   //gives the li item text
 
-    newItem.addEventListener("dblclick", function() {
+    newItem.addEventListener("click", function() {
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
         remove(exactLocationOfItemInDB) //
     })
+
+    newItem.addEventListener("keypress", function(event) {
+        // If the user presses the "Enter" key on the keyboard
+        if (event.key === "Enter") {
+          // Cancel the default action, if needed
+        // Trigger the button element with a click
+          this.click();
+        }
+      });
     
 }

@@ -78,6 +78,7 @@ button:hover {
 
 .list-item:hover {
     background-color: #FFECC7;
+    text-decoration: line-through;
     cursor:pointer;
 }
 
