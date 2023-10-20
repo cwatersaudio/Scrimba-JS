@@ -1,1 +1,0 @@
-THis is an adaptation of scrimba assignment to make a mobile app that tracks leads for business.  It will hopefully be the means of populating a database of funeral homes for a larger project I'm working on in React to create an easy to navigate, interactive list of funeral homes in the greater Winston Salem, NC area.
